@@ -1,11 +1,12 @@
 # VS Code DICOM Viewer with MPR
 
-![DICOM Viewer Demo](https://raw.githubusercontent.com/jd-opensource/vscode-dicom-viewer/main/docs/images/dicom-viewer-demo.png)
+![DICOM Viewer Demo](https://raw.githubusercontent.com/digitrax1/vscode-dicom-viewer/main/docs/images/dicom-viewer-demo.png)
 
 ## 更新日志
 
 - **v0.0.6**: 除了保留资源管理器右键快速加载外，启动时自动检查 Python 环境及 `pydicom`、`numpy`、`SimpleITK`、`vtk` 等依赖，不满足会弹窗提醒并阻止继续运行；远程环境下依然会通过 Base64 回退传输 DICOM 数据，确保图像不会因通道限制而丢失。
 - **加速优化**：插件在处理DICOM/NIfTI文件、3D重建和分割可视化时进行了算法和数据流的加速优化，大幅提升加载与交互响应速度。
+- **项目开源地址**：[https://github.com/digitrax1/vscode-dicom-viewer/tree/main](https://github.com/digitrax1/vscode-dicom-viewer/tree/main)
 
 ## 插件介绍
 
