@@ -1,0 +1,93 @@
+{
+  "name": "vscode-dicom-viewer",
+  "publisher": "JDH-ALGO",
+  "author": "JDH Algo",
+  "displayName": "DICOM Viewer with MPR",
+  "description": "A VSCode extension for viewing DICOM images with Multi-Planar Reconstruction (MPR)",
+  "version": "0.0.6",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/jd-opensource/vscode-dicom-viewer.git"
+  },
+  "homepage": "https://github.com/jd-opensource/vscode-dicom-viewer#readme",
+  "bugs": {
+    "url": "https://github.com/jd-opensource/vscode-dicom-viewer/issues"
+  },
+  "engines": {
+    "vscode": "^1.80.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [
+    "onCommand:dicom-viewer.openDicomViewer"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "dicom-viewer.openDicomViewer",
+        "title": "Open DICOM Viewer",
+        "category": "DICOM Viewer"
+      }
+    ],
+    "menus": {
+      "explorer/context": [
+        {
+          "command": "dicom-viewer.openDicomViewer",
+          "when": "resourceFilename =~ /\\.dcm$/i",
+          "group": "navigation"
+        },
+        {
+          "command": "dicom-viewer.openDicomViewer",
+          "when": "explorerResourceIsFolder",
+          "group": "navigation"
+        },
+        {
+          "command": "dicom-viewer.openDicomViewer",
+          "when": "resourceFilename =~ /\\.nii(\\.gz)?$/i",
+          "group": "navigation"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "DICOM Viewer",
+      "properties": {
+        "dicomViewer.pythonPath": {
+          "type": "string",
+          "default": "python3",
+          "description": "Path to Python executable for running the NIfTI server. Default is 'python3'. On Windows, you might need to use 'python' or the full path to python.exe"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "node ./out/test/runTest.js"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.80.0",
+    "@types/glob": "^8.1.0",
+    "@types/mocha": "^10.0.1",
+    "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.59.1",
+    "@typescript-eslint/parser": "^5.59.1",
+    "eslint": "^8.39.0",
+    "glob": "^8.1.0",
+    "mocha": "^10.2.0",
+    "typescript": "^5.0.4",
+    "@vscode/test-electron": "^2.3.0"
+  },
+  "dependencies": {
+    "cornerstone-core": "^2.6.1",
+    "cornerstone-math": "^0.1.8",
+    "cornerstone-tools": "^2.5.1",
+    "cornerstone-wado-image-loader": "^3.3.1",
+    "dicom-parser": "^1.8.21",
+    "vtk.js": "^29.10.1"
+  }
+}
